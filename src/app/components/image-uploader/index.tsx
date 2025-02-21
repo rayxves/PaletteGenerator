@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import upload_image from "../../../../public/freepik__adjust__90241.png";
 import { useRef, useState } from "react";
 
 interface props {
@@ -25,7 +24,7 @@ export default function ImageUploader({
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full gap-8 ">
-      <div className="flex flex-col items-center justify-center h-fit w-10/12 sm:w-9/12 md:w-6/12 lg:w-5/12 xl:w-4/12 gap-5 p-10 border-2 border-slate-100 border-dashed rounded-md">
+      <div className="flex flex-col items-center justify-center h-fit w-10/12 sm:w-9/12 md:w-6/12 lg:w-5/12 xl:w-4/12 gap-10  p-10 border-2 border-slate-100 border-dashed rounded-md">
         <h1 className="text-xl md:text-2xl text-center font-[family-name:var(--font-geist-mono)]">
           Find your ideal color palette
         </h1>
@@ -43,7 +42,18 @@ export default function ImageUploader({
             </p>
           </div>
         ) : (
-          <Image src={upload_image} alt=""></Image>
+          <div className="flex flex-col items-center justify-center ">
+            {" "}
+            <svg
+              className="w-2/5 h-fit fill-[#8e8e8e]"
+              viewBox="0 0 576 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M160 80H512c8.8 0 16 7.2 16 16V320c0 8.8-7.2 16-16 16H490.8L388.1 178.9c-4.4-6.8-12-10.9-20.1-10.9s-15.7 4.1-20.1 10.9l-52.2 79.8-12.4-16.9c-4.5-6.2-11.7-9.8-19.4-9.8s-14.8 3.6-19.4 9.8L175.6 336H160c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16zM96 96V320c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H160c-35.3 0-64 28.7-64 64zM48 120c0-13.3-10.7-24-24-24S0 106.7 0 120V344c0 75.1 60.9 136 136 136H456c13.3 0 24-10.7 24-24s-10.7-24-24-24H136c-48.6 0-88-39.4-88-88V120zm208 24a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+            </svg>
+
+         
+          </div>
         )}
 
         {imagePreview ? (
