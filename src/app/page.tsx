@@ -5,7 +5,7 @@ import ImageUploader from "./components/image-uploader";
 import ColorPalette from "./components/color-palette";
 
 export default function Home() {
-  const [isImageUploaded, setIsImageUpload] = useState<boolean>(false);
+  const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [progressFromImagePreview, setProgressFromImagePreview] =
     useState<boolean>(false);
   const [imageData, setImageData] = useState<ImageData>({} as ImageData);
@@ -26,10 +26,10 @@ export default function Home() {
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     if (imageData) {
       setImageData(imageData);
-      setIsImageUpload(true);
+      setIsImageUploaded(true);
     } else {
       setImageData({} as ImageData);
-      setIsImageUpload(false);
+      setIsImageUploaded(false);
     }
     return imageData;
   };
