@@ -29,3 +29,15 @@ body,
 * {
   height: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--background);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--background);
+  }
+}
