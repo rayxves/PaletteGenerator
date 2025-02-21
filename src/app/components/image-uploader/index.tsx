@@ -5,9 +5,13 @@ import { useRef, useState } from "react";
 
 interface props {
   onImageUpload: (file: File) => void;
+  onImagePreviewProgress: () => void;
 }
 
-export default function ImageUploader({ onImageUpload }: props) {
+export default function ImageUploader({
+  onImageUpload,
+  onImagePreviewProgress,
+}: props) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -62,7 +66,12 @@ export default function ImageUploader({ onImageUpload }: props) {
           <span>{imagePreview ? "Change File" : "Choose File"}</span>
         </button>
         {imagePreview ? (
-          <></>
+          <button
+          className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black gap-2"
+          onClick={onImagePreviewProgress}
+          >
+            Continue
+          </button>
         ) : (
           <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm font-[family-name:var(--font-geist-sans)]">
             Upload your image here
