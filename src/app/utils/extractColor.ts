@@ -1,44 +1,57 @@
 import * as tf from "@tensorflow/tfjs";
 
+interface Color {
+  r: number;
+  g: number;
+  b: number;
+}
+
 export async function extractColors(imageData: ImageData, numColors = 5) {
-  const pixels = tf.browser.fromPixels(imageData).toFloat();
-  const normalized = pixels.div(255);
-  const reshaped = normalized.reshape([-1, 3]);
-  const centroids = tf.variable(tf.randomUniform([numColors, 3]));
-  for (let i = 0; i < 10; i++) {
-    const distances = tf
-      .sub(reshaped.expandDims(1), centroids.expandDims(0))
-      .square()
-      .sum(2);
+  return new Promise<Color[]>((resolve) => {
+    setTimeout(async () => {
+      const pixels = tf.browser.fromPixels(imageData).toFloat();
+      const reshaped = pixels.reshape([-1, 3]);
 
-    const clusterAssignments = distances.argMin(1);
-    const newCentroids = [];
-
-    for (let j = 0; j < numColors; j++) {
-      const clusterPixels = reshaped.gather(
-        clusterAssignments.equal(j).toInt().expandDims(1).tile([1, 3])
+      const sampleIndices = tf.tensor1d(
+        Array.from(
+          tf.util.createShuffledIndices(reshaped.shape[0]).slice(0, numColors)
+        ),
+        "int32"
       );
+      const centroids = tf.variable(tf.gather(reshaped, sampleIndices));
 
-      const meanColor = clusterPixels.mean();
-      newCentroids.push(meanColor);
-    }
+      for (let i = 0; i < 20; i++) {
+        const distances = tf
+          .sub(reshaped.expandDims(1), centroids.expandDims(0))
+          .square()
+          .sum(2);
 
-    centroids.assign(tf.stack(newCentroids));
-  }
+        const clusterAssignments = distances.argMin(1);
+        const newCentroids: tf.Tensor[] = [];
 
-  const colorsArray = centroids.arraySync() as number[][];
+        for (let j = 0; j < numColors; j++) {
+          const mask = clusterAssignments.equal(j);
+          const clusterPixels = await tf.booleanMaskAsync(reshaped, mask);
 
-  const colors = [];
+          if (clusterPixels.size > 0) {
+            const meanColor = (await clusterPixels).mean(0).reshape([3]);
+            newCentroids.push(meanColor);
+          } else {
+            newCentroids.push(centroids.slice([j, 0], [1, 3]).squeeze());
+          }
+        }
 
-  for (let i = 0; i < colorsArray.length; i++) {
-    const color = colorsArray[i];
+        centroids.assign(tf.stack(newCentroids));
+      }
 
-    colors.push({
-      r: Math.round(color[0] * 255),
-      g: Math.round(color[1] * 255),
-      b: Math.round(color[2] * 255),
-    });
-  }
+      const colorsArray = centroids.arraySync() as number[][];
+      const colors = colorsArray.map(([r, g, b]) => ({
+        r: Math.round(r),
+        g: Math.round(g),
+        b: Math.round(b),
+      }));
 
-  return colors;
+      resolve(colors);
+    }, 0);
+  });
 }
