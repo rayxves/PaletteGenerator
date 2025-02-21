@@ -27,19 +27,22 @@ export async function extractColors(imageData: ImageData, numColors = 5) {
           .sum(2);
 
         const clusterAssignments = distances.argMin(1);
-        const newCentroids: tf.Tensor[] = [];
+        const newCentroidsPromises = [];
 
         for (let j = 0; j < numColors; j++) {
           const mask = clusterAssignments.equal(j);
-          const clusterPixels = await tf.booleanMaskAsync(reshaped, mask);
+          const clusterPixelsPromise = tf.booleanMaskAsync(reshaped, mask).then((clusterPixels) => {
+            if (clusterPixels.size > 0) {
+              return clusterPixels.mean(0).reshape([3]);
+            } else {
+              return centroids.slice([j, 0], [1, 3]).squeeze();
+            }
+          });
 
-          if (clusterPixels.size > 0) {
-            const meanColor = (await clusterPixels).mean(0).reshape([3]);
-            newCentroids.push(meanColor);
-          } else {
-            newCentroids.push(centroids.slice([j, 0], [1, 3]).squeeze());
-          }
+          newCentroidsPromises.push(clusterPixelsPromise);
         }
+
+        const newCentroids = await Promise.all(newCentroidsPromises);
 
         centroids.assign(tf.stack(newCentroids));
       }
