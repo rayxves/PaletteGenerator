@@ -45,37 +45,79 @@ export default function ImageUploader({
         ) : (
           <Image src={upload_image} alt=""></Image>
         )}
-        <input
-          type="file"
-          accept="image/*"
-          className="hidden"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-        />
-        <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center border-b-4 border-r-4 border-slate-400 hover:border-slate-700 max-w-45 max-h-10"
-          onClick={() => fileInputRef.current?.click()}
-        >
-          <svg
-            className="fill-current w-4 h-4 mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-          </svg>
-          <span>{imagePreview ? "Change File" : "Choose File"}</span>
-        </button>
+
         {imagePreview ? (
-          <button
-          className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black gap-2"
-          onClick={onImagePreviewProgress}
-          >
-            Continue
-          </button>
+          <div className="flex h-fit w-full gap-2 justify-between">
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+            />
+            <button
+              className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-2 sm:px-3 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black sm:gap-2 text-sm sm:text-md"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <svg
+                className="fill-current w-3 h-3 mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+              </svg>
+              <span>Change File</span>
+            </button>
+            <button
+              className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-2 sm:pl-5 sm:px-1 rounded inline-flex items-center border-b-4 border-r-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black sm:gap-2 text-sm sm:text-md"
+              onClick={onImagePreviewProgress}
+            >
+              <span> Continue</span>
+              <svg
+                className="w-4 h-3 sm:w-5 sm:h-4 text-gray-800"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 12H5m14 0-4 4m4-4-4-4"
+                />
+              </svg>
+            </button>
+          </div>
         ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm font-[family-name:var(--font-geist-sans)]">
-            Upload your image here
-          </p>
+          <div>
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+            />
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center border-b-4 border-r-4 border-slate-400 hover:border-slate-700 max-w-45 max-h-10"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <svg
+                className="fill-current w-4 h-4 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+              </svg>
+              <span>Choose File</span>
+            </button>
+            <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm font-[family-name:var(--font-geist-sans)]">
+              Upload your image here
+            </p>
+          </div>
         )}
       </div>
     </div>

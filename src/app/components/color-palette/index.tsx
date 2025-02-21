@@ -74,7 +74,7 @@ export default function ColorPalette({ imageData, numColors }: props) {
           <h1 className="w-5/6 h-fit p-2 font-[family-name:var(--font-geist-mono)] text-2xl">
             Your color palette
           </h1>
-          <div className="flex items-center justify-center gap-1 w-5/6 md:w-4/6 lg:w-3/6 h-2/5">
+          <div className="flex items-center justify-center gap-1 w-5/6 md:w-4/6 lg:w-2/5 h-2/5">
             {colors.map((color, index) => (
               <div
                 id="copyDiv"
@@ -102,14 +102,26 @@ export default function ColorPalette({ imageData, numColors }: props) {
                     color
                   )}`}
                 >{`rgb(${color.r}, ${color.g}, ${color.b})`}</p>
+
+                <svg
+                  className={`w-4 h-3 ${getTextColorForBackground(
+                    color
+                  )} rotate-90 mt-2`}
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 18 20"
+                >
+                  <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
+                </svg>
               </div>
             ))}
           </div>
 
-          <div className="w-5/6 md:w-4/6 lg:w-3/6 max-h-16">
+          <div className="w-5/6 md:w-4/6 lg:w-2/5 max-h-16">
             <div className="w-full max-h-16 flex justify-between">
               <button
-                className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-2 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black gap-2"
+                className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-3 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black gap-2"
                 onClick={handleReturnClick}
               >
                 <svg
