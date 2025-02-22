@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 Color Palette Generator
 
-## Getting Started
+## Overview
+Color Palette Extractor is a web application that enables users to upload an image and extract a color palette from it. The app is built using Next.js and React and leverages the Canvas API, TensorFlow.js and machine learning techniques for color extraction.
 
-First, run the development server:
+## Features
+- Upload an image
+- Preview the uploaded image
+- Extract dominant colors using **K-Means clustering**
+- Display the extracted color palette
+- Allows users to copy rgb color
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
+- Next.js
+- React
+- Tailwind CSS (for styling)
+- TensorFlow.js (for machine learning)
+- Canvas (for image processing)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 
+- npm or yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/rayxves/PaletteGenerator.git
+   ```
+2. Install dependencies:
+   ```sh
+   npm install  
+   # or
+   yarn install
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. Open the app in your browser:
+   ```
+   http://localhost:3000
+   ```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## How It Works
+1. User uploads an image.
+2. The image is drawn onto a <canvas> element.
+3. The getImageData() method extracts pixel data (color information) from the canvas.
+4. The pixel data is passed to TensorFlow.js for processing.
+5. K-Means clustering is used to identify the most dominant colors in the image.
+6. The dominant colors (clusters) are extracted by finding centroids of color groups.
+7. The extracted colors are shown to the user in a color palette using the ColorPalette component.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Learnings & Insights
+Developing this project provided valuable insights into:
+- **Image Processing:** Used the Canvas API to extract pixel data from images.
+- **Machine Learning with TensorFlow.js:** Implemented K-Means clustering for color extraction, leveraging unsupervised learning.
+- **Efficient File Handling:** Managed image uploads and processing efficiently in Next.js.
+- **UI Design:** Created a responsive and visually appealing UI using Tailwind CSS.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
+- The project is live! Check out the deployed version here: [palette-generator](https://palettegenerator-4oqd.onrender.com/)
 
-## Deploy on Vercel
+## Author
+- Rayssa Guimarães - [GitHub Profile](https://github.com/rayxves)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
