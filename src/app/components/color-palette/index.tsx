@@ -87,7 +87,7 @@ export default function ColorPalette({ imageData, numColors }: props) {
               >
                 {copied === index && (
                   <div
-                    className="w-fit h-fit absolute top-auto left-auto p-2 text-xs text-black bg-slate-200 rounded"
+                    className="w-fit h-fit absolute top-auto left-auto p-1 text-xs text-black bg-slate-200 bg-opacity-55 rounded"
                     style={{
                       zIndex: 9,
                       rotate: "-90deg",
