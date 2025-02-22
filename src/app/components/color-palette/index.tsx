@@ -119,7 +119,7 @@ export default function ColorPalette({ imageData, numColors }: props) {
           </div>
 
           <div className="w-5/6 md:w-4/6 lg:w-2/5 max-h-16">
-            <div className="w-full max-h-16 flex justify-between">
+            <div className="w-full max-h-16 flex justify-between items-center">
               <button
                 className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-3 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black gap-2"
                 onClick={handleReturnClick}
