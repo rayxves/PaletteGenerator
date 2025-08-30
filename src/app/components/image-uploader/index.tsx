@@ -45,7 +45,7 @@ export default function ImageUploader({
           <div className="flex flex-col items-center justify-center ">
             {" "}
             <svg
-              className="w-2/5 h-fit fill-[#8e8e8e] hidden sm:block"
+              className="w-2/5 h-fit fill-[#8e8e8e]"
               viewBox="0 0 576 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -114,7 +114,7 @@ export default function ImageUploader({
               onClick={() => fileInputRef.current?.click()}
             >
               <svg
-                className="fill-current w-4 h-4 mr-2  hidden sm:block"
+                className="fill-current w-4 h-4 mr-2"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
               >
