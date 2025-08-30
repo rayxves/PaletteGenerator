@@ -24,7 +24,7 @@ export default function ImageUploader({
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full gap-8 ">
-      <div className="flex flex-col items-center justify-center h-fit w-10/12 sm:w-9/12 md:w-6/12 lg:w-5/12 xl:w-4/12 gap-12  p-10 border-2 border-slate-100 border-dashed rounded-md hover:bg-[rgba(255,255,255,0.05)]">
+      <div className="flex flex-col bg-gray-800/10 shadow-lg shadow-gray-100/20 items-center justify-center h-fit w-[95%] sm:w-9/12 md:w-6/12 lg:w-5/12 gap-12  p-10 ring-1 ring-gray-500/55  rounded-xl hover:bg-gray-800/20">
         <h1 className="text-xl md:text-2xl text-center font-[family-name:var(--font-geist-mono)]">
           Find your ideal color palette
         </h1>
@@ -33,7 +33,7 @@ export default function ImageUploader({
             <Image
               src={imagePreview}
               alt="Preview"
-              width={300}
+              width={350}
               height={250}
               className="rounded-md"
             ></Image>
@@ -45,7 +45,7 @@ export default function ImageUploader({
           <div className="flex flex-col items-center justify-center ">
             {" "}
             <svg
-              className="w-2/5 h-fit fill-[#8e8e8e]"
+              className="w-2/5 h-fit fill-[#8e8e8e] hidden sm:block"
               viewBox="0 0 576 512"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -64,25 +64,25 @@ export default function ImageUploader({
               onChange={handleFileChange}
             />
             <button
-              className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-2 sm:px-3 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black sm:gap-2 text-sm sm:text-md"
+              className="bg-blue-200  text-gray-800 font-bold py-2 px-2 sm:px-3 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-blue-500 max-w-fit max-h-fit shadow-md shadow-black sm:gap-1 text-sm sm:text-md"
               onClick={() => fileInputRef.current?.click()}
             >
               <svg
-                className="fill-current w-3 h-3 mr-1"
+                className="fill-current w-3 h-3 mr-1  hidden sm:block"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
               >
                 <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
               </svg>
-              <span>Change File</span>
+              Change File
             </button>
             <button
-              className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-2 sm:pl-5 sm:px-1 rounded inline-flex items-center border-b-4 border-r-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black sm:gap-2 text-sm sm:text-md"
+              className="bg-blue-200  text-gray-800 font-bold py-2 px-2 sm:pl-5 sm:px-1 rounded inline-flex items-center border-b-4 border-r-4 border-blue-400 hover:border-blue-500 max-w-fit max-h-fit shadow-md shadow-black sm:gap-1 text-sm sm:text-md"
               onClick={onImagePreviewProgress}
             >
-              <span> Continue</span>
+              Continue
               <svg
-                className="w-4 h-3 sm:w-5 sm:h-4 text-gray-800"
+                className="w-4 h-3 sm:w-5 sm:h-4  hidden sm:block text-gray-800"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -110,17 +110,17 @@ export default function ImageUploader({
               onChange={handleFileChange}
             />
             <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center border-b-4 border-r-4 border-slate-400 hover:border-slate-700 max-w-45 max-h-10"
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded flex items-center  justify-center border-b-4 border-r-4 border-slate-400 hover:border-slate-700 max-w-45 max-h-10"
               onClick={() => fileInputRef.current?.click()}
             >
               <svg
-                className="fill-current w-4 h-4 mr-2"
+                className="fill-current w-4 h-4 mr-2  hidden sm:block"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
               >
                 <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
               </svg>
-              <span>Choose File</span>
+              Choose File
             </button>
             <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm font-[family-name:var(--font-geist-sans)]">
               Upload your image here

@@ -106,7 +106,7 @@ export default function ColorPalette({ imageData, numColors }: props) {
                 <svg
                   className={`w-4 h-3 ${getTextColorForBackground(
                     color
-                  )} rotate-90 mt-2`}
+                  )} rotate-90 mt-2 `}
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -121,11 +121,11 @@ export default function ColorPalette({ imageData, numColors }: props) {
           <div className="w-5/6 md:w-4/6 lg:w-2/5 max-h-16">
             <div className="w-full max-h-16 flex justify-between items-center">
               <button
-                className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-3 rounded inline-flex items-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black gap-2"
+                className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-bold py-2 px-3 rounded flex items-center justify-center border-b-4 border-l-4 border-blue-400 hover:border-slate-500 max-w-45 max-h-10 shadow-md shadow-black gap-2"
                 onClick={handleReturnClick}
               >
                 <svg
-                  className="w-4 h-4 text-gray-800"
+                  className="w-4 h-4 text-gray-800  hidden sm:block"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -139,15 +139,15 @@ export default function ColorPalette({ imageData, numColors }: props) {
                     d="M13 5H1m0 0 4 4M1 5l4-4"
                   />
                 </svg>
-                <span>Return</span>
+                Return
               </button>
               <button
-                className="bg-green-200 hover:bg-green-300 text-gray-900 font-bold py-2 px-2 gap-2 rounded inline-flex items-center border-b-4 border-r-4 border-green-600 hover:border-green-700 max-w-45 max-h-10 shadow-md shadow-black"
+                className="bg-green-200 hover:bg-green-300 text-gray-900 font-bold py-2 px-2 gap-2 rounded flex items-center justify-center border-b-4 border-r-4 border-green-600 hover:border-green-700 max-w-45 max-h-10 shadow-md shadow-black"
                 onClick={handleGenerateAgain}
               >
-                <span> Generate again</span>
+                 Generate again
                 <svg
-                  className="w-5 h-5 text-gray-800 "
+                  className="w-5 h-5 text-gray-800  hidden sm:block"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
